@@ -1,4 +1,5 @@
 import { push, ref } from 'firebase/database'
+import Head from 'next/head'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { database } from '../service/configFirebase'
@@ -15,7 +16,7 @@ export default function Home() {
 
   const SaveData = () => {
 
-    if (pergunta !== '' && alternativeA !== '' && alternativeB !=='' && resposta !=='' && BNCC !== '') {
+    if (pergunta !== '' && alternativeA !== '' && alternativeB !== '' && resposta !== '' && BNCC !== '') {
       let Dados = {
         P: pergunta,
         A: alternativeA,
@@ -34,7 +35,7 @@ export default function Home() {
       setAlternativeB('')
       setResposta('')
       setBNCC('')
-      
+
       return
     }
 
@@ -44,6 +45,10 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>Montando Quiz</title>
+        <link rel="shortcut icon" href="/logo.svg" type="image/x-icon" />
+      </Head>
       <Header>
         <Image src="/logo.svg" alt="logo" width={40} height={40} />
         <Title>MONTANDO QUIZ</Title>
