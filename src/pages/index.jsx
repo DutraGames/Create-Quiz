@@ -53,7 +53,7 @@ export default function Home() {
         <meta property='og:description' content='Crie suas questões forma rápida!'/>
         <meta property='og:url' content='https://create-quiz-peach.vercel.app/' />
         <meta property='og:type' content='website' />
-        <meta property='og:image' content='https://create-quiz-peach.vercel.app/logo.svg' />
+        <meta property='og:image' content='https://create-quiz-peach.vercel.app/api/og' />
 
       </Head>
       <Header>
