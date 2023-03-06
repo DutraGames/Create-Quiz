@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const Header = styled.div`
 padding: 0 11.2rem;
 background-color: #2E2E2E;
-width: 100vw;
+width: 100%;
 display: flex;
 height: 5rem;
 align-items: center;
@@ -15,6 +15,10 @@ font-size: 3.2rem;
 font-weight: bold;
 color: #FFF;
 padding-left: 5rem;
+
+@media (max-width: 600px) {
+    font-size: 2.4rem;
+}
 `
 
 export const FrameQuestion = styled.div`
@@ -28,11 +32,12 @@ display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: column;
+padding: 2rem;
 gap: 2rem;
 `
 
 export const Category = styled.select`
-width: 40rem;
+width: 100%;
 height: 4rem;
 border-radius: 1.5rem;
 border: 0;
@@ -41,7 +46,7 @@ font-size: 2rem;
 `
 
 export const InputTezt = styled.input`
-width: 40rem;
+width: 100%;
 height: 4rem;
 border-radius: 1.5rem;
 border: 0;
@@ -56,7 +61,7 @@ font-size: 2rem;
 export const ButtonSave = styled.button`
 background-color: #00BC22;
 color: #FFF;
-width: 40rem;
+width: 100%;
 height: 4rem;
 border-radius: 1.5rem;
 border: 0;
