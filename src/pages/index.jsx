@@ -1,0 +1,65 @@
+import { push, ref } from 'firebase/database'
+import Image from 'next/image'
+import React, { useState } from 'react'
+import { database } from '../service/configFirebase'
+import { ButtonSave, Category, FrameQuestion, Header, InputTezt, Title } from '../styles/app'
+
+export default function Home() {
+
+  const [Categoria, setCategoria] = useState('Portugues')
+  const [pergunta, setPergunta] = useState('')
+  const [alternativeA, setAlternativeA] = useState('')
+  const [alternativeB, setAlternativeB] = useState('')
+  const [resposta, setResposta] = useState('')
+
+  const SaveData = () => {
+
+    if (pergunta !== '' && alternativeA !== '' && alternativeB !=='' && resposta !=='') {
+      let Dados = {
+        P: pergunta,
+        A: alternativeA,
+        B: alternativeB,
+        R: resposta
+      }
+
+      let referencial = ref(database, Categoria)
+
+      push(referencial, Dados)
+
+      setCategoria('Portugues')
+      setPergunta('')
+      setAlternativeA('')
+      setAlternativeB('')
+      setResposta('')
+      
+      return
+    }
+
+    alert("prencha todos os campos!")
+
+  }
+
+  return (
+    <>
+      <Header>
+        <Image src="/logo.svg" alt="logo" width={40} height={40} />
+        <Title>MONTANDO QUIZ</Title>
+      </Header>
+
+      <FrameQuestion>
+        <Category value={Categoria} onChange={(text) => setCategoria(text.target.value)}>
+          <option value="Portugues">Português</option>
+          <option value="Ciencias">Ciências</option>
+          <option value="Historia">História</option>
+          <option value="Geografia">Geografia</option>
+          <option value="Matematica">Matemática</option>
+        </Category>
+        <InputTezt type="text" placeholder='Digite  a pergunta' value={pergunta} onChange={(text) => setPergunta(text.target.value)} />
+        <InputTezt type="text" placeholder='Digite alternativa A' value={alternativeA} onChange={(text) => setAlternativeA(text.target.value)} />
+        <InputTezt type="text" placeholder='Digite alternativa B' value={alternativeB} onChange={(text) => setAlternativeB(text.target.value)} />
+        <InputTezt type="text" placeholder='Digite a resposta (a,b)' value={resposta} onChange={(text) => setResposta(text.target.value)} />
+        <ButtonSave onClick={SaveData}>Salvar</ButtonSave>
+      </FrameQuestion>
+    </>
+  )
+}
