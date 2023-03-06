@@ -48,6 +48,13 @@ export default function Home() {
       <Head>
         <title>Montando Quiz</title>
         <link rel="shortcut icon" href="/logo.svg" type="image/x-icon" />
+        <meta name='description' content='Crie suas questões forma rápida!' />
+        <meta property='og:title' content='Montando Quiz' />
+        <meta property='og:description' content='Crie suas questões forma rápida!'/>
+        <meta property='og:url' content='https://create-quiz-peach.vercel.app/' />
+        <meta property='og:type' content='website' />
+        <meta property='og:image' content='https://create-quiz-peach.vercel.app/logo.svg' />
+
       </Head>
       <Header>
         <Image src="/logo.svg" alt="logo" width={40} height={40} />
