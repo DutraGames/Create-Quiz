@@ -8,7 +8,6 @@ min-width: 100vw;
 height: 5rem;
 align-items: center;
 justify-content: center;
-border: 2px solid #AAFF;
 `
 
 export const Title = styled.h1`
