@@ -10,7 +10,7 @@ export default async function handler() {
             <div
                 style={{
                     display: 'flex',
-                    fontSize: 40,
+                    fontSize: 72,
                     color: 'white',
                     background: 'black',
                     width: '100%',
@@ -25,7 +25,7 @@ export default async function handler() {
         ),
         {
             width: 1200,
-            height: 630,
+            height: 1200,
         },
     );
 }
