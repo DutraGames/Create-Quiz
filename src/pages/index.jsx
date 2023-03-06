@@ -11,15 +11,17 @@ export default function Home() {
   const [alternativeA, setAlternativeA] = useState('')
   const [alternativeB, setAlternativeB] = useState('')
   const [resposta, setResposta] = useState('')
+  const [BNCC, setBNCC] = useState('')
 
   const SaveData = () => {
 
-    if (pergunta !== '' && alternativeA !== '' && alternativeB !=='' && resposta !=='') {
+    if (pergunta !== '' && alternativeA !== '' && alternativeB !=='' && resposta !=='' && BNCC !== '') {
       let Dados = {
         P: pergunta,
         A: alternativeA,
         B: alternativeB,
-        R: resposta
+        R: resposta,
+        BNCC
       }
 
       let referencial = ref(database, Categoria)
@@ -31,6 +33,7 @@ export default function Home() {
       setAlternativeA('')
       setAlternativeB('')
       setResposta('')
+      setBNCC('')
       
       return
     }
@@ -57,7 +60,8 @@ export default function Home() {
         <InputTezt type="text" placeholder='Digite  a pergunta' value={pergunta} onChange={(text) => setPergunta(text.target.value)} />
         <InputTezt type="text" placeholder='Digite alternativa A' value={alternativeA} onChange={(text) => setAlternativeA(text.target.value)} />
         <InputTezt type="text" placeholder='Digite alternativa B' value={alternativeB} onChange={(text) => setAlternativeB(text.target.value)} />
-        <InputTezt type="text" placeholder='Digite a resposta (a,b)' value={resposta} onChange={(text) => setResposta(text.target.value)} />
+        <InputTezt type="text" placeholder='Digite a resposta (A,B)' value={resposta} onChange={(text) => setResposta(text.target.value)} />
+        <InputTezt type="text" placeholder='Digite o código BNCC' value={BNCC} onChange={(text) => setBNCC(text.target.value)} />
         <ButtonSave onClick={SaveData}>Salvar</ButtonSave>
       </FrameQuestion>
     </>
