@@ -3,11 +3,12 @@ import styled from "styled-components"
 export const Header = styled.div`
 padding: 0 11.2rem;
 background-color: #2E2E2E;
-width: 100%;
 display: flex;
+min-width: 100vw;
 height: 5rem;
 align-items: center;
 justify-content: center;
+border: 2px solid #AAFF;
 `
 
 export const Title = styled.h1`
@@ -17,7 +18,8 @@ color: #FFF;
 padding-left: 5rem;
 
 @media (max-width: 600px) {
-    font-size: 2.4rem;
+    font-size: 2rem;
+    text-align: center;
 }
 `
 
@@ -34,7 +36,13 @@ justify-content: center;
 flex-direction: column;
 padding: 2rem;
 gap: 2rem;
+
+@media (max-width: 600px) {
+    width: 90vw;
+}
 `
+
+
 
 export const Category = styled.select`
 width: 100%;
