@@ -1,4 +1,4 @@
-import { onValue, ref } from 'firebase/database'
+import { onValue, ref, remove } from 'firebase/database'
 import React, { useEffect, useState } from 'react'
 import { database } from '../service/configFirebase'
 import { ButtomDelete, Question, Questions } from '../styles/question'
@@ -24,10 +24,16 @@ export default function Perguntas() {
                 }
             })
             setPerguntas(data)
-            console.log(data);
         })
 
     }, [])
+
+    const DeleteQuestion = (key) =>{
+        const referencial = ref(database, `${Categoria}/${key}`)
+
+        console.log(referencial)
+        remove(referencial)
+    }
 
     return (
         <div>
@@ -37,7 +43,7 @@ export default function Perguntas() {
                     return (
                         <Question key={pergunta.chave}>
                             <Questions>{pergunta.P}</Questions>
-                            <ButtomDelete><MdDelete size="2rem"/></ButtomDelete>
+                            <ButtomDelete onClick={() =>DeleteQuestion(pergunta.chave)}><MdDelete size="2rem"/></ButtomDelete>
                         </Question>
                     )
                 })
