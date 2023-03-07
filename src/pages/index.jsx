@@ -54,7 +54,11 @@ export default function Home() {
         <meta property='og:url' content='https://create-quiz-peach.vercel.app/' />
         <meta property='og:type' content='website' />
         <meta property='og:image' content='https://create-quiz-peach.vercel.app/api/og' />
-
+        <meta name='twitter:card' content='summary'/>
+        <meta name='twitter:url' content='https://create-quiz-peach.vercel.app/'/>
+        <meta name='twitter:title' content='Montando Quiz'/>
+        <meta property='twitter:description' content='Crie suas questões forma rápida!'/>
+        <meta property='twitter:image' content='https://create-quiz-peach.vercel.app/api/og' />
       </Head>
       <Header>
         <Image src="/logo.svg" alt="logo" width={40} height={40} />
