@@ -1,5 +1,6 @@
 import { push, ref } from 'firebase/database'
 import Head from 'next/head'
+import Link from 'next/link'
 import React, { useState } from 'react'
 import Header from '../components/Header'
 import { database } from '../service/configFirebase'
@@ -79,6 +80,11 @@ export default function Home() {
         <InputTezt type="text" placeholder='Digite o código BNCC' value={BNCC} onChange={(text) => setBNCC(text.target.value)} />
         <ButtonSave onClick={SaveData}>Salvar</ButtonSave>
       </FrameQuestion>
+
+      <Link href='/perguntas' legacyBehavior>
+        <a>Perguntas</a>
+      </Link>
+
     </>
   )
 }
