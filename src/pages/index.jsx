@@ -1,7 +1,7 @@
 import { push, ref } from 'firebase/database'
 import Head from 'next/head'
-import Link from 'next/link'
 import React, { useState } from 'react'
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 import { database } from '../service/configFirebase'
 import { ButtonSave, Category, FrameQuestion, InputTezt } from '../styles/app'
@@ -81,9 +81,7 @@ export default function Home() {
         <ButtonSave onClick={SaveData}>Salvar</ButtonSave>
       </FrameQuestion>
 
-      <Link href='/perguntas' legacyBehavior>
-        <a>Perguntas</a>
-      </Link>
+      <Footer/>
 
     </>
   )
