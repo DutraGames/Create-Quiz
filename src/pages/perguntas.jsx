@@ -1,5 +1,6 @@
 import { onValue, ref, remove } from 'firebase/database'
 import React, { useEffect, useState } from 'react'
+import Header from '../components/Header'
 import { database } from '../service/configFirebase'
 import { ButtomDelete, Question, Questions } from '../styles/question'
 
@@ -28,7 +29,7 @@ export default function Perguntas() {
 
     }, [])
 
-    const DeleteQuestion = (key) =>{
+    const DeleteQuestion = (key) => {
         const referencial = ref(database, `${Categoria}/${key}`)
 
         console.log(referencial)
@@ -36,18 +37,19 @@ export default function Perguntas() {
     }
 
     return (
-        <div>
+        <>
+            <Header />
             {
                 Perguntas.map((pergunta) => {
 
                     return (
                         <Question key={pergunta.chave}>
                             <Questions>{pergunta.P}</Questions>
-                            <ButtomDelete onClick={() =>DeleteQuestion(pergunta.chave)}><MdDelete size="2rem"/></ButtomDelete>
+                            <ButtomDelete onClick={() => DeleteQuestion(pergunta.chave)}><MdDelete size="2rem" /></ButtomDelete>
                         </Question>
                     )
                 })
             }
-        </div>
+        </>
     )
 }
