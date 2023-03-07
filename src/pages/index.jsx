@@ -1,9 +1,9 @@
 import { push, ref } from 'firebase/database'
 import Head from 'next/head'
-import Image from 'next/image'
 import React, { useState } from 'react'
+import Header from '../components/Header'
 import { database } from '../service/configFirebase'
-import { ButtonSave, Category, FrameQuestion, Header, InputTezt, Title } from '../styles/app'
+import { ButtonSave, Category, FrameQuestion, InputTezt } from '../styles/app'
 
 export default function Home() {
 
@@ -60,10 +60,9 @@ export default function Home() {
         <meta property='twitter:description' content='Crie suas questões forma rápida!'/>
         <meta property='twitter:image' content='https://create-quiz-peach.vercel.app/api/og' />
       </Head>
-      <Header>
-        <Image src="/logo.svg" alt="logo" width={40} height={40} />
-        <Title>MONTANDO QUIZ</Title>
-      </Header>
+
+      <Header/>
+      
 
       <FrameQuestion>
         <Category value={Categoria} onChange={(text) => setCategoria(text.target.value)}>
