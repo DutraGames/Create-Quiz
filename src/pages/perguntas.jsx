@@ -1,7 +1,9 @@
 import { onValue, ref } from 'firebase/database'
 import React, { useEffect, useState } from 'react'
 import { database } from '../service/configFirebase'
+import { ButtomDelete, Question, Questions } from '../styles/question'
 
+import { MdDelete } from 'react-icons/md'
 export default function Perguntas() {
 
     const [Categoria, setCategoria] = useState('Portugues')
@@ -33,13 +35,10 @@ export default function Perguntas() {
                 Perguntas.map((pergunta) => {
 
                     return (
-                        <div key={pergunta.chave}>
-                            <p>{pergunta.P}</p>
-                            <p>{pergunta.A}</p>
-                            <p>{pergunta.B}</p>
-                            <p>{pergunta.R}</p>
-                            <p>{pergunta.BNCC}</p>
-                        </div>
+                        <Question key={pergunta.chave}>
+                            <Questions>{pergunta.P}</Questions>
+                            <ButtomDelete><MdDelete size="2rem"/></ButtomDelete>
+                        </Question>
                     )
                 })
             }
