@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+padding: 2rem;
+`
+
 export const Question = styled.div`
-width: 90vw;
 background-color: #FFE7A8;
 height: 4rem;
-margin-top: 1.5rem;
-margin-left: 2rem;
+width: 100%;
 display: flex;
 align-items: center;
 justify-content: space-between;

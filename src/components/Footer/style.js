@@ -5,11 +5,8 @@ background-color: #2E2E2E;
 display: flex;
 align-items: center;
 justify-content: center;
-height: 6rem;
 flex-direction: column;
-width: 100vw;
-position: absolute;
-bottom: 0;
+padding: 4rem;
 `
 
 export const Links = styled.div`
@@ -30,11 +27,14 @@ transition: all .4s;
 &:hover{
     opacity: .5;
 }
+
+@media (max-width: 600px) {
+    font-size: 1.4rem;
+}
 `
 
 export const Copy = styled.span`
-padding-top: 1rem;
-padding-bottom: 1rem;
+padding-top: 2rem;
 color: #FFF;
 font-size: 1.4rem;
 `

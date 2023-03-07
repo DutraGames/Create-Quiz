@@ -17,7 +17,6 @@ export const Container = styled.div`
 padding: 0 11.2rem;
 background-color: #2E2E2E;
 display: flex;
-min-width: 100vw;
 height: 5rem;
 align-items: center;
 justify-content: center;
