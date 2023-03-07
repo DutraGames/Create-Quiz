@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import { database } from '../service/configFirebase'
-import { ButtomDelete, Question, Questions } from '../styles/question'
+import { ButtomDelete, Container, Question, Questions } from '../styles/question'
 
 import { MdDelete } from 'react-icons/md'
 export default function Perguntas() {
@@ -44,19 +44,21 @@ export default function Perguntas() {
     return (
         <>
             <Header />
-            {
-                Perguntas.map((pergunta) => {
+            <Container>
+                {
+                    Perguntas.map((pergunta) => {
 
-                    return (
-                        <Question key={pergunta.chave}>
-                            <Questions>{pergunta.P}</Questions>
-                            <ButtomDelete onClick={() => DeleteQuestion(pergunta.chave)}><MdDelete size="2rem" /></ButtomDelete>
-                        </Question>
-                    )
-                })
-            }
+                        return (
+                            <Question key={pergunta.chave}>
+                                <Questions>{pergunta.P}</Questions>
+                                <ButtomDelete onClick={() => DeleteQuestion(pergunta.chave)}><MdDelete size="2rem" /></ButtomDelete>
+                            </Question>
+                        )
+                    })
+                }
+            </Container>
 
-            <Footer/>
+            <Footer />
         </>
     )
 }
