@@ -1,5 +1,7 @@
 import { onValue, ref, remove } from 'firebase/database'
+import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 import { database } from '../service/configFirebase'
 import { ButtomDelete, Question, Questions } from '../styles/question'
@@ -7,12 +9,15 @@ import { ButtomDelete, Question, Questions } from '../styles/question'
 import { MdDelete } from 'react-icons/md'
 export default function Perguntas() {
 
-    const [Categoria, setCategoria] = useState('Portugues')
     const [Perguntas, setPerguntas] = useState([])
 
+    const router = useRouter()
+    const categoria = router.query.categoria
+
     useEffect(() => {
+
         const db = database
-        const referencial = ref(db, Categoria)
+        const referencial = ref(db, categoria)
         onValue(referencial, (snapshot) => {
             const data = Object.entries(snapshot.val() ?? {}).map(([chave, valor]) => {
                 return {
@@ -27,12 +32,12 @@ export default function Perguntas() {
             setPerguntas(data)
         })
 
-    }, [])
+        console.log(categoria)
+
+    }, [categoria])
 
     const DeleteQuestion = (key) => {
-        const referencial = ref(database, `${Categoria}/${key}`)
-
-        console.log(referencial)
+        const referencial = ref(database, `${categoria}/${key}`)
         remove(referencial)
     }
 
@@ -50,6 +55,8 @@ export default function Perguntas() {
                     )
                 })
             }
+
+            <Footer/>
         </>
     )
 }
