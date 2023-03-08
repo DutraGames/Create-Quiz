@@ -6,18 +6,35 @@ padding: 2rem;
 
 export const Question = styled.div`
 background-color: #FFE7A8;
-height: 4rem;
+padding: 1rem;
 width: 100%;
 display: flex;
 align-items: center;
 justify-content: space-between;
 border-radius: 1rem;
 box-shadow: .2rem .2rem .2rem .1rem rgba(0,0,0,.2);
+
+& + &{
+    margin-top: 2rem;
+}
 `
 
-export const Questions = styled.p`
+export const QuestionLeft = styled.div`
+`
+
+export const QuestionBNCC = styled.p`
+font-size: 1.2rem;
+background-color: #F7BB00;
+width: 7rem;
+text-align: center;
+border-radius: 1rem;
+padding: 0.5rem;
+color: #FFF;
+`
+export const QuestionText = styled.p`
 font-size: 2rem;
-margin-left: 1rem;
+margin-top: .5rem;
+
 `
 
 export const ButtomDelete = styled.div`
