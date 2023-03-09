@@ -11,12 +11,12 @@ export default function HeadMain({title, desc}) {
         <meta property='og:description' content={desc}/>
         <meta property='og:url' content='https://create-quiz-peach.vercel.app/' />
         <meta property='og:type' content='website' />
-        <meta property='og:image' content='https://create-quiz-peach.vercel.app/api/og?title=MONTANDO%20QUIZ' />
+        <meta property='og:image' content={`https://create-quiz-peach.vercel.app/api/og?title=${title}`} />
         <meta name='twitter:card' content='summary'/>
         <meta name='twitter:url' content='https://create-quiz-peach.vercel.app/'/>
         <meta name='twitter:title' content={title}/>
-        <meta property='twitter:description' content='Crie suas questões forma rápida!'/>
-        <meta property='twitter:image' content='https://create-quiz-peach.vercel.app/api/og?title=MONTANDO%20QUIZ' />
+        <meta property='twitter:description' content={desc}/>
+        <meta property='twitter:image' content={`https://create-quiz-peach.vercel.app/api/og?title=${title}`} />
       </Head>
   )
 }
