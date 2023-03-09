@@ -17,14 +17,18 @@ export default function Home() {
   const SaveData = () => {
 
     if (pergunta !== '' && alternativeA !== '' && alternativeB !== '' && resposta !== '' && BNCC !== '') {
+
+      const BNCCCode = BNCC.toUpperCase()
+
       let Dados = {
         P: pergunta,
         A: alternativeA,
         B: alternativeB,
         R: resposta,
-        BNCC
+        BNCC: BNCCCode
       }
 
+      
       let referencial = ref(database, Categoria)
 
       push(referencial, Dados)
