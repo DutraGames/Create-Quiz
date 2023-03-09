@@ -53,7 +53,7 @@ justify-content: center;
 gap: 1rem;
 padding-top: 1rem;
 border-top: .1rem solid #3E3E3E;
-width: 100vw;
+width: 100%;
 `
 
 export const ButtonsLink = styled.a`
