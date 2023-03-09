@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import HeadMain from '../components/HeadMain'
 import { database } from '../service/configFirebase'
 import { ButtonSave, Category, FrameQuestion, InputTezt } from '../styles/app'
+
 export default function Home() {
 
   const [Categoria, setCategoria] = useState('Portugues')
@@ -19,15 +20,21 @@ export default function Home() {
     if (pergunta !== '' && alternativeA !== '' && alternativeB !== '' && resposta !== '' && BNCC !== '') {
 
       const BNCCCode = BNCC.toUpperCase()
+      const RESPOSTA = resposta.toUpperCase()
 
       let Dados = {
         P: pergunta,
         A: alternativeA,
         B: alternativeB,
-        R: resposta,
+        R: RESPOSTA,
         BNCC: BNCCCode
       }
+      
 
+      if(RESPOSTA !== "A" && RESPOSTA !== "B"){
+        alert("Somente alternativas A ou B")
+        return
+      }
       
       let referencial = ref(database, Categoria)
 
@@ -42,17 +49,13 @@ export default function Home() {
 
       return
     }
-
     alert("prencha todos os campos!")
-
   }
 
   return (
     <>
       <HeadMain title='Montando Quiz' desc='Crie suas questões forma rápida!'/>
       <Header/>
-      
-
       <FrameQuestion>
         <Category value={Categoria} onChange={(text) => setCategoria(text.target.value)}>
           <option value="Portugues">Português</option>
@@ -68,9 +71,7 @@ export default function Home() {
         <InputTezt type="text" placeholder='Digite o código BNCC' value={BNCC} onChange={(text) => setBNCC(text.target.value)} />
         <ButtonSave onClick={SaveData}>Salvar</ButtonSave>
       </FrameQuestion>
-
       <Footer/>
-
     </>
   )
 }
