@@ -1,11 +1,10 @@
 import { push, ref } from 'firebase/database'
-import Head from 'next/head'
 import React, { useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import HeadMain from '../components/HeadMain'
 import { database } from '../service/configFirebase'
 import { ButtonSave, Category, FrameQuestion, InputTezt } from '../styles/app'
-
 export default function Home() {
 
   const [Categoria, setCategoria] = useState('Portugues')
@@ -46,22 +45,7 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Montando Quiz</title>
-        <link rel="shortcut icon" href="/logo.svg" type="image/x-icon" />
-        <meta name='description' content='Crie suas questões forma rápida!' />
-        <meta property='og:title' content='Montando Quiz' />
-        <meta property='og:description' content='Crie suas questões forma rápida!'/>
-        <meta property='og:url' content='https://create-quiz-peach.vercel.app/' />
-        <meta property='og:type' content='website' />
-        <meta property='og:image' content='https://create-quiz-peach.vercel.app/api/og' />
-        <meta name='twitter:card' content='summary'/>
-        <meta name='twitter:url' content='https://create-quiz-peach.vercel.app/'/>
-        <meta name='twitter:title' content='Montando Quiz'/>
-        <meta property='twitter:description' content='Crie suas questões forma rápida!'/>
-        <meta property='twitter:image' content='https://create-quiz-peach.vercel.app/api/og' />
-      </Head>
-
+      <HeadMain title='Montando Quiz' desc='Crie suas questões forma rápida!'/>
       <Header/>
       
 

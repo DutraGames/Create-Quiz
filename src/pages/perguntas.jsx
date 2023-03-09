@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import HeadMain from '../components/HeadMain'
 import { database } from '../service/configFirebase'
 import { ButtomDelete, Container, Question, QuestionBNCC, QuestionLeft, QuestionText } from '../styles/question'
 
@@ -43,6 +44,7 @@ export default function Perguntas() {
 
     return (
         <>
+            <HeadMain title={`Questões de ${categoria} `} desc={`Questões de ${categoria} descritas por professores!`} />
             <Header />
             <Container>
                 {
@@ -51,8 +53,8 @@ export default function Perguntas() {
                         return (
                             <Question key={pergunta.chave}>
                                 <QuestionLeft>
-                                <QuestionBNCC>{pergunta.BNCC}</QuestionBNCC>
-                                <QuestionText>{pergunta.P}</QuestionText>
+                                    <QuestionBNCC>{pergunta.BNCC}</QuestionBNCC>
+                                    <QuestionText>{pergunta.P}</QuestionText>
                                 </QuestionLeft>
                                 <ButtomDelete onClick={() => DeleteQuestion(pergunta.chave)}><MdDelete size="3rem" /></ButtomDelete>
                             </Question>
