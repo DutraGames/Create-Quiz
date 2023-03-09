@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <Container>
       <Rotate>
-        <Image src='/logo.svg' width={40} height={40} />
+        <Image src='/logo.svg' width={40} height={40} alt="Logo Create Quiz"/>
       </Rotate>
       <Title>MONTANDO QUIZ</Title>
     </Container>
