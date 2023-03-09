@@ -36,7 +36,7 @@ export default function Home() {
         return
       }
       
-      let referencial = ref(database, Categoria)
+      let referencial = ref(database, `2alternativas/${Categoria}`)
 
       push(referencial, Dados)
 
@@ -67,8 +67,8 @@ export default function Home() {
         <InputTezt type="text" placeholder='Digite  a pergunta' value={pergunta} onChange={(text) => setPergunta(text.target.value)} />
         <InputTezt type="text" placeholder='Digite alternativa A' value={alternativeA} onChange={(text) => setAlternativeA(text.target.value)} />
         <InputTezt type="text" placeholder='Digite alternativa B' value={alternativeB} onChange={(text) => setAlternativeB(text.target.value)} />
-        <InputTezt type="text" placeholder='Digite a resposta (A,B)' value={resposta} onChange={(text) => setResposta(text.target.value)} />
-        <InputTezt type="text" placeholder='Digite o código BNCC' value={BNCC} onChange={(text) => setBNCC(text.target.value)} />
+        <InputTezt type="text" placeholder='Digite a resposta (A,B)' value={resposta} onChange={(text) => setResposta(text.target.value)} maxLength={1} />
+        <InputTezt type="text" placeholder='Digite o código BNCC' value={BNCC} onChange={(text) => setBNCC(text.target.value)} maxLength={8} minLength={8}/>
         <ButtonSave onClick={SaveData}>Salvar</ButtonSave>
       </FrameQuestion>
       <Footer/>

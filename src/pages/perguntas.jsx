@@ -18,7 +18,7 @@ export default function Perguntas() {
     useEffect(() => {
 
         const db = database
-        const referencial = ref(db, categoria)
+        const referencial = ref(db, `2alternativas/${categoria}`)
         onValue(referencial, (snapshot) => {
             const data = Object.entries(snapshot.val() ?? {}).map(([chave, valor]) => {
                 return {
@@ -33,12 +33,11 @@ export default function Perguntas() {
             setPerguntas(data)
         })
 
-        console.log(categoria)
-
     }, [categoria])
 
     const DeleteQuestion = (key) => {
-        const referencial = ref(database, `${categoria}/${key}`)
+        const db = database
+        const referencial = ref(db, `2alternativas/${categoria}`)
         remove(referencial)
     }
 
