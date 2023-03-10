@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from 'firebase/auth'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
@@ -27,6 +27,7 @@ export default function register() {
                         displayName: username
                     })
 
+                    sendEmailVerification(user)
 
                     setEmail("")
                     setPassword("")
@@ -40,7 +41,6 @@ export default function register() {
                     return
                 })
         }
-        return alert("Preencha os campos!")
     }
 
     useEffect(() => {
@@ -55,7 +55,7 @@ export default function register() {
                 <Title>Cadastrar-se:</Title>
                 <Input placeholder='seu nome' type="text" value={username} onChange={(text) => setUsername(text.target.value)} />
                 <Input placeholder='seuemail@gmail.com' type="email" value={email} onChange={(text) => setEmail(text.target.value)} />
-                <Input placeholder='suasenha' type="password" value={password} onChange={(text) => setPassword(text.target.value)} />
+                <Input placeholder='sua senha123' type="password" value={password} onChange={(text) => setPassword(text.target.value)} />
                 <ButtonCreate onClick={CreateAccont}>Criar</ButtonCreate>
                 <TextBottom>Caso tenha conta, faça <Link href="/login" legacyBehavior><LinkButton>Login</LinkButton></Link></TextBottom>
             </Frame>
