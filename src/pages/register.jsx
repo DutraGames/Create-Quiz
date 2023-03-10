@@ -1,15 +1,20 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import useAuth from '../hooks/useAuth'
 import { auth } from '../service/configFirebase'
 import { ButtonCreate, Frame, Input, LinkButton, TextBottom, Title } from '../styles/regisLogin'
 
+
 export default function register() {
 
+    const router = useRouter()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const { Logado } = useAuth()
 
     const CreateAccont = () => {
         createUserWithEmailAndPassword(auth, email, password)
@@ -19,6 +24,7 @@ export default function register() {
 
                 setEmail("")
                 setPassword("")
+                router.push('/')
 
             }).catch((error) => {
                 console.log(error.message);
@@ -26,6 +32,10 @@ export default function register() {
                 return
             })
     }
+
+    useEffect(() => {
+        if (Logado) router.push('/')
+    }, [])
 
     return (
         <>
@@ -38,7 +48,7 @@ export default function register() {
                 <ButtonCreate onClick={CreateAccont}>Criar</ButtonCreate>
                 <TextBottom>Caso tenha conta, faça <Link href="/login" legacyBehavior><LinkButton>Login</LinkButton></Link></TextBottom>
             </Frame>
-            <Footer/>
+            <Footer />
         </>
     )
 }
