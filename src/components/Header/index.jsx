@@ -1,15 +1,17 @@
 import { onAuthStateChanged } from 'firebase/auth'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { AiOutlineUser } from 'react-icons/ai'
 import useAuth from '../../hooks/useAuth'
 import { auth } from '../../service/configFirebase'
 import { BtnLogado, ButtonsLink, Container, HeaderBottom, HeaderTop, Links, Rotate, Title } from './style'
+
 export default function Header() {
 
   const {Logado, setLogado} = useAuth()
-  
+  const router = useRouter()
   useEffect(() => {
 
     onAuthStateChanged(auth, (user) => {
@@ -18,7 +20,7 @@ export default function Header() {
         setLogado(true)
 
       }else{
-
+        if(router.asPath !=="/register" || router.asPath !=="/login" ) router.push('/register')
       }
     });
   }, [])
