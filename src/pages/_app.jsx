@@ -1,10 +1,10 @@
+import AuthContextProvider from '../context/authContext'
 import GlobalStyle from '../styles/globalstyle'
-
 export default function MyApp({ Component, pageProps }) {
     return (
-        <main>
+        <AuthContextProvider>
             <GlobalStyle />
             <Component {...pageProps} />
-        </main>
+        </AuthContextProvider>
     )
 }
