@@ -51,3 +51,18 @@ transition: all .4s;
     color: #000;
 }
 `
+
+export const TextBottom = styled.span`
+font-size: 1.4rem;
+`
+
+export const LinkButton = styled.a`
+font-size: 1.4rem;
+color: #00F;
+transition: all .3s;
+cursor: pointer;
+
+&:hover{
+    text-decoration: underline;
+}
+`

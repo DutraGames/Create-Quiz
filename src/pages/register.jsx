@@ -1,9 +1,10 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import Link from 'next/link'
 import React, { useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import { auth } from '../service/configFirebase'
-import { ButtonCreate, Frame, Input, Title } from '../styles/regisLogin'
+import { ButtonCreate, Frame, Input, LinkButton, TextBottom, Title } from '../styles/regisLogin'
 
 export default function register() {
 
@@ -35,6 +36,7 @@ export default function register() {
                 <Input placeholder='seuemail@gmail.com' type="email" value={email} onChange={(text) => setEmail(text.target.value)} />
                 <Input placeholder='suasenha' type="password" value={password} onChange={(text) => setPassword(text.target.value)} />
                 <ButtonCreate onClick={CreateAccont}>Criar</ButtonCreate>
+                <TextBottom>Caso tenha conta, faça <Link href="/login" legacyBehavior><LinkButton>Login</LinkButton></Link></TextBottom>
             </Frame>
             <Footer/>
         </>
