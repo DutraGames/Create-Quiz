@@ -1,17 +1,18 @@
 import { onValue, ref, remove } from 'firebase/database'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { MdDelete } from 'react-icons/md'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import HeadMain from '../components/HeadMain'
+import useAuth from '../hooks/useAuth'
 import { database } from '../service/configFirebase'
-import { ButtomDelete, Container, Question, QuestionBNCC, QuestionLeft, QuestionText } from '../styles/question'
+import { ButtomDelete, Container, Question, QuestionBNCC, QuestionLeft, QuestionName, QuestionText } from '../styles/question'
 
-import { MdDelete } from 'react-icons/md'
 export default function Perguntas() {
 
     const [Perguntas, setPerguntas] = useState([])
-
+    const {nome} = useAuth()
     const router = useRouter()
     const categoria = router.query.categoria
 
@@ -27,7 +28,8 @@ export default function Perguntas() {
                     'A': valor.A,
                     'B': valor.B,
                     'BNCC': valor.BNCC,
-                    'R': valor.R
+                    'R': valor.R,
+                    'nomeUser': valor.nomeUser,
                 }
             })
             setPerguntas(data)
@@ -54,6 +56,7 @@ export default function Perguntas() {
                                 <QuestionLeft>
                                     <QuestionBNCC>{pergunta.BNCC}</QuestionBNCC>
                                     <QuestionText>{pergunta.P}</QuestionText>
+                                    <QuestionName>{pergunta.nomeUser}</QuestionName>
                                 </QuestionLeft>
                                 <ButtomDelete onClick={() => DeleteQuestion(pergunta.chave)}><MdDelete size="3rem" /></ButtomDelete>
                             </Question>

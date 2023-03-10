@@ -31,6 +31,7 @@ border-radius: 1rem;
 padding: 0.5rem;
 color: #FFF;
 `
+
 export const QuestionText = styled.p`
 font-size: 2rem;
 margin-top: .5rem;
@@ -48,4 +49,14 @@ transition: all .4s;
     color:#FE8585;
 }
 
+`
+
+export const QuestionName = styled.p`
+font-size: 1.2rem;
+background-color: #F10;
+width: 7rem;
+text-align: center;
+border-radius: 1rem;
+padding: 0.5rem;
+color: #FFF;
 `
