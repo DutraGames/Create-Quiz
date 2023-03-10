@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
@@ -14,23 +14,33 @@ export default function register() {
     const router = useRouter()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [username, setUsername] = useState("")
     const { Logado } = useAuth()
 
-    const CreateAccont = () => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredencial) => {
-                const user = userCredencial.user
-                console.log(user)
+    const CreateAccont = async () => {
+        if (email !== "" && username !== "" && password !== "") {
+            await createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredencial) => {
+                    const user = userCredencial.user
 
-                setEmail("")
-                setPassword("")
-                router.push('/')
+                    updateProfile(user, {
+                        displayName: username
+                    })
 
-            }).catch((error) => {
-                console.log(error.message);
-                alert("Email ou senha inválidos!")
-                return
-            })
+
+                    setEmail("")
+                    setPassword("")
+                    setUsername("")
+                    router.push('/')
+                    return
+
+                }).catch((error) => {
+                    console.log(error.message);
+                    alert("Email ou senha inválidos!")
+                    return
+                })
+        }
+        return alert("Preencha os campos!")
     }
 
     useEffect(() => {
@@ -43,6 +53,7 @@ export default function register() {
 
             <Frame>
                 <Title>Cadastrar-se:</Title>
+                <Input placeholder='seu nome' type="text" value={username} onChange={(text) => setUsername(text.target.value)} />
                 <Input placeholder='seuemail@gmail.com' type="email" value={email} onChange={(text) => setEmail(text.target.value)} />
                 <Input placeholder='suasenha' type="password" value={password} onChange={(text) => setPassword(text.target.value)} />
                 <ButtonCreate onClick={CreateAccont}>Criar</ButtonCreate>
