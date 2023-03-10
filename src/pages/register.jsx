@@ -1,7 +1,10 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import React, { useState } from 'react'
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 import { auth } from '../service/configFirebase'
+import { ButtonCreate, Frame, Input, Title } from '../styles/regisLogin'
+
 export default function register() {
 
     const [email, setEmail] = useState("")
@@ -27,9 +30,13 @@ export default function register() {
         <>
             <Header />
 
-            <input type="email" value={email} onChange={(text) => setEmail(text.target.value)} />
-            <input type="password" value={password} onChange={(text) => setPassword(text.target.value)} />
-            <button onClick={CreateAccont}>criar</button>
+            <Frame>
+                <Title>Cadastrar-se:</Title>
+                <Input placeholder='seuemail@gmail.com' type="email" value={email} onChange={(text) => setEmail(text.target.value)} />
+                <Input placeholder='suasenha' type="password" value={password} onChange={(text) => setPassword(text.target.value)} />
+                <ButtonCreate onClick={CreateAccont}>Criar</ButtonCreate>
+            </Frame>
+            <Footer/>
         </>
     )
 }
