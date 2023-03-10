@@ -11,7 +11,6 @@ padding: 2rem;
 
 
 export const Copy = styled.span`
-padding-top: 2rem;
 color: #FFF;
 font-size: 1.6rem;
 `
