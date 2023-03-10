@@ -74,3 +74,15 @@ padding: 1rem;
 
 }
 `
+
+export const BtnLogado = styled.div`
+background-color: blue;
+width: 3rem;
+height: 3rem;
+margin-left: 2rem;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #FFF;
+`
