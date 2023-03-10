@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import HeadMain from '../components/HeadMain'
 import useAuth from '../hooks/useAuth'
 import { auth } from '../service/configFirebase'
 import { ButtonCreate, Frame, Input, LinkButton, TextBottom, Title } from '../styles/regisLogin'
@@ -39,8 +40,8 @@ export default function register() {
 
     return (
         <>
+            <HeadMain title='Montando Quiz - login' desc='Fazendo o login na saplicação!' />
             <Header />
-
             <Frame>
                 <Title>Entre:</Title>
                 <Input placeholder='seuemail@gmail.com' type="email" value={email} onChange={(text) => setEmail(text.target.value)} />
