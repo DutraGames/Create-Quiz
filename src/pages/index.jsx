@@ -3,9 +3,9 @@ import React, { useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import HeadMain from '../components/HeadMain'
+import useAuth from '../hooks/useAuth'
 import { database } from '../service/configFirebase'
 import { ButtonSave, Category, FrameQuestion, InputTezt } from '../styles/app'
-
 export default function Home() {
 
   const [Categoria, setCategoria] = useState('Portugues')
@@ -15,6 +15,7 @@ export default function Home() {
   const [resposta, setResposta] = useState('')
   const [BNCC, setBNCC] = useState('')
 
+  const {nome} = useAuth()
   const SaveData = () => {
 
     if (pergunta !== '' && alternativeA !== '' && alternativeB !== '' && resposta !== '' && BNCC !== '') {
@@ -27,7 +28,8 @@ export default function Home() {
         A: alternativeA,
         B: alternativeB,
         R: RESPOSTA,
-        BNCC: BNCCCode
+        BNCC: BNCCCode,
+        nomeUser :nome
       }
       
 
