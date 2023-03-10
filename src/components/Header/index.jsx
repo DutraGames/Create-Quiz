@@ -20,7 +20,7 @@ export default function Header() {
         setLogado(true)
 
       }else{
-        if(router.asPath !=="/register" || router.asPath !=="/login" ) router.push('/register')
+        if(router.asPath !=="/register" && router.asPath !=="/login" ) router.push('/login')
       }
     });
   }, [])
