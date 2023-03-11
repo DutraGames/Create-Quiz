@@ -7,7 +7,7 @@ import Header from '../components/Header'
 import HeadMain from '../components/HeadMain'
 import useAuth from '../hooks/useAuth'
 import { auth } from '../service/configFirebase'
-import { ButtonCreate, Frame, Input, LinkButton, TextBottom, Title } from '../styles/regisLogin'
+import { ButtonCreate, Container, Frame, Input, LinkButton, TextBottom, Title } from '../styles/regisLogin'
 
 export default function register() {
 
@@ -17,7 +17,7 @@ export default function register() {
     const [username, setUsername] = useState("")
     const { Logado } = useAuth()
 
-    const validateEmail = (email) =>{
+    const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
@@ -25,36 +25,36 @@ export default function register() {
     const CreateAccont = async () => {
         if (email !== "" && username !== "" && password !== "") {
 
-            if(validateEmail(email)){
+            if (validateEmail(email)) {
                 await createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredencial) => {
-                    const user = userCredencial.user
+                    .then((userCredencial) => {
+                        const user = userCredencial.user
 
-                    updateProfile(user, { displayName: username })
-                        .then(() => {
-                            sendEmailVerification(user)
+                        updateProfile(user, { displayName: username })
+                            .then(() => {
+                                sendEmailVerification(user)
 
-                            setEmail("")
-                            setPassword("")
-                            setUsername("")
-                            router.push('/')
-                            return
-                        })
-                        .catch((error) => {
-                            console.log(error);
-                        })
+                                setEmail("")
+                                setPassword("")
+                                setUsername("")
+                                router.push('/')
+                                return
+                            })
+                            .catch((error) => {
+                                console.log(error);
+                            })
 
-                }).catch((error) => {
-                    console.log(error.message);
-                    error.message === "Firebase: Error (auth/email-already-in-use)."? alert("Esse email já está em uso!"): ""
-                    return
-                })
-            }else{
+                    }).catch((error) => {
+                        console.log(error.message);
+                        error.message === "Firebase: Error (auth/email-already-in-use)." ? alert("Esse email já está em uso!") : ""
+                        return
+                    })
+            } else {
                 alert("Email inválido!")
             }
 
 
-            
+
         } else {
             alert("Preencha todos os campos!")
         }
@@ -68,14 +68,16 @@ export default function register() {
         <>
             <HeadMain title='Montando Quiz - register' desc='Fazendo o cadastro na saplicação!' />
             <Header />
-            <Frame>
-                <Title>Cadastrar-se:</Title>
-                <Input placeholder='seu nome' maxLength={8} type="text" value={username} onChange={(text) => setUsername(text.target.value)} />
-                <Input placeholder='seuemail@gmail.com' type="email" value={email} onChange={(text) => setEmail(text.target.value)} />
-                <Input placeholder='sua senha123' type="password" value={password} onChange={(text) => setPassword(text.target.value)} minLength={6} />
-                {password.length >= 6 ? (<ButtonCreate onClick={CreateAccont}>Cadastrar-se</ButtonCreate>) : (<ButtonCreate disabled onClick={CreateAccont}>Cadastrar-se</ButtonCreate>)}
-                <TextBottom>Caso tenha conta, faça <Link href="/login" legacyBehavior><LinkButton>Login</LinkButton></Link></TextBottom>
-            </Frame>
+            <Container>
+                <Frame>
+                    <Title>Cadastrar-se:</Title>
+                    <Input placeholder='seu nome' maxLength={8} type="text" value={username} onChange={(text) => setUsername(text.target.value)} />
+                    <Input placeholder='seuemail@gmail.com' type="email" value={email} onChange={(text) => setEmail(text.target.value)} />
+                    <Input placeholder='sua senha123' type="password" value={password} onChange={(text) => setPassword(text.target.value)} minLength={6} />
+                    {password.length >= 6 ? (<ButtonCreate onClick={CreateAccont}>Cadastrar-se</ButtonCreate>) : (<ButtonCreate disabled onClick={CreateAccont}>Cadastrar-se</ButtonCreate>)}
+                    <TextBottom>Caso tenha conta, faça <Link href="/login" legacyBehavior><LinkButton>Login</LinkButton></Link></TextBottom>
+                </Frame>
+            </Container>
             <Footer />
         </>
     )

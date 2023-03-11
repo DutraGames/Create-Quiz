@@ -7,7 +7,7 @@ import Header from '../components/Header'
 import HeadMain from '../components/HeadMain'
 import useAuth from '../hooks/useAuth'
 import { auth } from '../service/configFirebase'
-import { ButtonCreate, Frame, Input, LinkButton, TextBottom, Title } from '../styles/regisLogin'
+import { ButtonCreate, Container, Frame, Input, LinkButton, TextBottom, Title } from '../styles/regisLogin'
 
 export default function register() {
 
@@ -40,13 +40,15 @@ export default function register() {
         <>
             <HeadMain title='Montando Quiz - login' desc='Fazendo o login na saplicação!' />
             <Header />
-            <Frame>
-                <Title>Entre:</Title>
-                <Input placeholder='seuemail@gmail.com' type="email" value={email} onChange={(text) => setEmail(text.target.value)} />
-                <Input placeholder='suasenha' type="password" value={password} onChange={(text) => setPassword(text.target.value)} />
-                <ButtonCreate onClick={SingInAccont}>Entrar</ButtonCreate>
-                <TextBottom>Caso não tenha conta, <Link href="/register" legacyBehavior><LinkButton>Cadastre-se</LinkButton></Link></TextBottom>
-            </Frame>
+            <Container>
+                <Frame>
+                    <Title>Entre:</Title>
+                    <Input placeholder='seuemail@gmail.com' type="email" value={email} onChange={(text) => setEmail(text.target.value)} />
+                    <Input placeholder='suasenha' type="password" value={password} onChange={(text) => setPassword(text.target.value)} />
+                    <ButtonCreate onClick={SingInAccont}>Entrar</ButtonCreate>
+                    <TextBottom>Caso não tenha conta, <Link href="/register" legacyBehavior><LinkButton>Cadastre-se</LinkButton></Link></TextBottom>
+                </Frame>
+            </Container>
             <Footer />
         </>
     )

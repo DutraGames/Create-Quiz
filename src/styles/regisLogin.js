@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+height: 100vh;
+`
+
 export const Frame = styled.div`
 background-color: #FFE7A8;
 margin: 4rem auto;
