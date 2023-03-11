@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 padding: 2rem;
+min-height: 100vh;
 `
 
 export const Question = styled.div`
@@ -25,7 +26,7 @@ export const QuestionLeft = styled.div`
 export const QuestionBNCC = styled.p`
 font-size: 1.2rem;
 background-color: #F7BB00;
-width: 7rem;
+width: 8rem;
 text-align: center;
 border-radius: 1rem;
 padding: 0.5rem;
@@ -54,9 +55,10 @@ transition: all .4s;
 export const QuestionName = styled.p`
 font-size: 1.2rem;
 background-color: #F10;
-width: 7rem;
+width: 8rem;
 text-align: center;
 border-radius: 1rem;
 padding: 0.5rem;
 color: #FFF;
+margin-top: .5rem;
 `
