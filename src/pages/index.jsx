@@ -16,7 +16,7 @@ export default function Home() {
   const [BNCC, setBNCC] = useState('')
 
   const {nome} = useAuth()
-  const SaveData = () => {
+  const SaveData = async() => {
 
     if (pergunta !== '' && alternativeA !== '' && alternativeB !== '' && resposta !== '' && BNCC !== '') {
 
@@ -29,7 +29,7 @@ export default function Home() {
         B: alternativeB,
         R: RESPOSTA,
         BNCC: BNCCCode,
-        nomeUser :nome
+        nomeUser: nome,
       }
       
 
@@ -40,7 +40,7 @@ export default function Home() {
       
       let referencial = ref(database, `2alternativas/${Categoria}`)
 
-      push(referencial, Dados)
+      await push(referencial, Dados)
 
       setCategoria('Portugues')
       setPergunta('')
@@ -51,6 +51,7 @@ export default function Home() {
 
       return
     }
+    
     alert("prencha todos os campos!")
   }
 
