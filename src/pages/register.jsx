@@ -23,17 +23,19 @@ export default function register() {
                 .then((userCredencial) => {
                     const user = userCredencial.user
 
-                    updateProfile(user, {
-                        displayName: username
-                    })
+                    updateProfile(user, { displayName: username })
+                        .then(() => {
+                            sendEmailVerification(user)
 
-                    sendEmailVerification(user)
-
-                    setEmail("")
-                    setPassword("")
-                    setUsername("")
-                    router.push('/')
-                    return
+                            setEmail("")
+                            setPassword("")
+                            setUsername("")
+                            router.push('/')
+                            return
+                        })
+                        .catch((error)=>{
+                            console.log(error);
+                        })
 
                 }).catch((error) => {
                     console.log(error.message);
