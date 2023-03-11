@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } 
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import HeadMain from '../components/HeadMain'
@@ -38,6 +39,7 @@ export default function register() {
                                 setPassword("")
                                 setUsername("")
                                 router.push('/')
+                                toast.success("Conta Criada!")
                                 return
                             })
                             .catch((error) => {
@@ -45,8 +47,7 @@ export default function register() {
                             })
 
                     }).catch((error) => {
-                        console.log(error.message);
-                        error.message === "Firebase: Error (auth/email-already-in-use)." ? alert("Esse email já está em uso!") : ""
+                        error.message === "Firebase: Error (auth/email-already-in-use)." ? toast.error('Esse email já está em uso!') : ""
                         return
                     })
             } else {
@@ -56,7 +57,7 @@ export default function register() {
 
 
         } else {
-            alert("Preencha todos os campos!")
+            toast.error('Preencha todos os campos!')
         }
     }
 
@@ -79,6 +80,7 @@ export default function register() {
                 </Frame>
             </Container>
             <Footer />
+
         </>
     )
 }
