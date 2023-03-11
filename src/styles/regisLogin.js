@@ -50,6 +50,13 @@ transition: all .4s;
     background-color: #7EF482;
     color: #000;
 }
+
+:disabled{
+    background-color: #999;
+    opacity: 0.5;
+    color: #fff;
+    cursor: auto;
+}
 `
 
 export const TextBottom = styled.span`
