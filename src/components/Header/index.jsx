@@ -12,7 +12,7 @@ export default function Header() {
 
   const { Logado, setLogado, setNome } = useAuth()
   const router = useRouter()
-  
+
   useEffect(() => {
 
     onAuthStateChanged(auth, (user) => {
@@ -36,29 +36,30 @@ export default function Header() {
         <Title>MONTANDO QUIZ</Title>
         {Logado ? (<><BtnLogado><AiOutlineUser size="2rem" /></BtnLogado></>) : (<></>)}
       </HeaderTop>
-      <Links>
-        <Link href='/' legacyBehavior>
-          <ButtonsLink>Criar</ButtonsLink>
-        </Link>
-        <Link href='/perguntas?categoria=Portugues' legacyBehavior>
-          <ButtonsLink>Português</ButtonsLink>
-        </Link>
-        <Link href='/perguntas?categoria=Geografia' legacyBehavior>
-          <ButtonsLink>Geografia</ButtonsLink>
-        </Link>
-        <Link href='/perguntas?categoria=Matematica' legacyBehavior>
-          <ButtonsLink>Matemática</ButtonsLink>
-        </Link>
-        <Link href='/perguntas?categoria=Historia' legacyBehavior>
-          <ButtonsLink>História</ButtonsLink>
-        </Link>
-        <Link href='/perguntas?categoria=Ciencias' legacyBehavior>
-          <ButtonsLink>Ciências</ButtonsLink>
-        </Link>
-      </Links>
-      <HeaderBottom>
-
-      </HeaderBottom>
+      {Logado? (
+             <HeaderBottom>
+             <Links>
+               <Link href='/' legacyBehavior>
+                 <ButtonsLink>Criar</ButtonsLink>
+               </Link>
+               <Link href='/perguntas?categoria=Portugues' legacyBehavior>
+                 <ButtonsLink>Português</ButtonsLink>
+               </Link>
+               <Link href='/perguntas?categoria=Geografia' legacyBehavior>
+                 <ButtonsLink>Geografia</ButtonsLink>
+               </Link>
+               <Link href='/perguntas?categoria=Matematica' legacyBehavior>
+                 <ButtonsLink>Matemática</ButtonsLink>
+               </Link>
+               <Link href='/perguntas?categoria=Historia' legacyBehavior>
+                 <ButtonsLink>História</ButtonsLink>
+               </Link>
+               <Link href='/perguntas?categoria=Ciencias' legacyBehavior>
+                 <ButtonsLink>Ciências</ButtonsLink>
+               </Link>
+             </Links>
+           </HeaderBottom>
+      ): (<></>)}
     </Container>
   )
 }
