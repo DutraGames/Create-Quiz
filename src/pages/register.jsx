@@ -46,6 +46,7 @@ export default function register() {
 
                 }).catch((error) => {
                     console.log(error.message);
+                    error.message === "Firebase: Error (auth/email-already-in-use)."? alert("Esse email já está em uso!"): ""
                     return
                 })
             }else{
