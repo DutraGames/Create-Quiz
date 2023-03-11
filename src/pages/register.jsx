@@ -55,7 +55,7 @@ export default function register() {
             <Header />
             <Frame>
                 <Title>Cadastrar-se:</Title>
-                <Input placeholder='seu nome' type="text" value={username} onChange={(text) => setUsername(text.target.value)} />
+                <Input placeholder='seu nome' maxLength={8} type="text" value={username} onChange={(text) => setUsername(text.target.value)} />
                 <Input placeholder='seuemail@gmail.com' type="email" value={email} onChange={(text) => setEmail(text.target.value)} />
                 <Input placeholder='sua senha123' type="password" value={password} onChange={(text) => setPassword(text.target.value)} />
                 <ButtonCreate onClick={CreateAccont}>Cadastrar-se</ButtonCreate>
