@@ -14,9 +14,9 @@ export default function Home() {
   const [alternativeB, setAlternativeB] = useState('')
   const [resposta, setResposta] = useState('')
   const [BNCC, setBNCC] = useState('')
+  const { nome } = useAuth()
 
-  const {nome} = useAuth()
-  const SaveData = async() => {
+  const SaveData = async () => {
 
     if (pergunta !== '' && alternativeA !== '' && alternativeB !== '' && resposta !== '' && BNCC !== '') {
 
@@ -31,13 +31,12 @@ export default function Home() {
         BNCC: BNCCCode,
         nomeUser: nome,
       }
-      
 
-      if(RESPOSTA !== "A" && RESPOSTA !== "B"){
+      if (RESPOSTA !== "A" && RESPOSTA !== "B") {
         alert("Somente alternativas A ou B")
         return
       }
-      
+
       let referencial = ref(database, `2alternativas/${Categoria}`)
 
       await push(referencial, Dados)
@@ -51,14 +50,13 @@ export default function Home() {
 
       return
     }
-    
     alert("prencha todos os campos!")
   }
 
   return (
     <>
-      <HeadMain title='Montando Quiz' desc='Crie suas questões forma rápida!'/>
-      <Header/>
+      <HeadMain title='Montando Quiz' desc='Crie suas questões forma rápida!' />
+      <Header />
       <FrameQuestion>
         <Category value={Categoria} onChange={(text) => setCategoria(text.target.value)}>
           <option value="Portugues">Português</option>
@@ -71,10 +69,10 @@ export default function Home() {
         <InputTezt type="text" placeholder='Digite alternativa A' value={alternativeA} onChange={(text) => setAlternativeA(text.target.value)} />
         <InputTezt type="text" placeholder='Digite alternativa B' value={alternativeB} onChange={(text) => setAlternativeB(text.target.value)} />
         <InputTezt type="text" placeholder='Digite a resposta (A,B)' value={resposta} onChange={(text) => setResposta(text.target.value)} maxLength={1} />
-        <InputTezt type="text" placeholder='Digite o código BNCC' value={BNCC} onChange={(text) => setBNCC(text.target.value)} maxLength={8} minLength={8}/>
+        <InputTezt type="text" placeholder='Digite o código BNCC' value={BNCC} onChange={(text) => setBNCC(text.target.value)} maxLength={8} minLength={8} />
         <ButtonSave onClick={SaveData}>Salvar</ButtonSave>
       </FrameQuestion>
-      <Footer/>
+      <Footer />
     </>
   )
 }
