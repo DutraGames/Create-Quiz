@@ -58,7 +58,7 @@ export default function Perguntas() {
                                     <QuestionText>{pergunta.P}</QuestionText>
                                     <QuestionName>{pergunta.nomeUser}</QuestionName>
                                 </QuestionLeft>
-                                <ButtomDelete onClick={() => DeleteQuestion(pergunta.chave)}><MdDelete size="3rem" /></ButtomDelete>
+                                {nome === pergunta.nomeUser? (<ButtomDelete onClick={() => DeleteQuestion(pergunta.chave)}><MdDelete size="3rem" /></ButtomDelete>): (<></>)}
                             </Question>
                         )
                     })
