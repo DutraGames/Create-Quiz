@@ -39,7 +39,7 @@ export default function Perguntas() {
 
     const DeleteQuestion = (key) => {
         const db = database
-        const referencial = ref(db, `2alternativas/${categoria}`)
+        const referencial = ref(db, `2alternativas/${categoria}/${key}`)
         remove(referencial)
     }
 
