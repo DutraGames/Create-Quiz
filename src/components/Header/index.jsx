@@ -10,8 +10,9 @@ import { BtnLogado, ButtonsLink, Container, HeaderBottom, HeaderTop, Links, Rota
 
 export default function Header() {
 
-  const {Logado, setLogado,setNome} = useAuth()
+  const { Logado, setLogado, setNome } = useAuth()
   const router = useRouter()
+  
   useEffect(() => {
 
     onAuthStateChanged(auth, (user) => {
@@ -19,13 +20,13 @@ export default function Header() {
         setLogado(true)
         setNome(user.displayName)
 
-      }else{
-        if(router.asPath !=="/register" && router.asPath !=="/login" ) router.push('/login')
+      } else {
+        if (router.asPath !== "/register" && router.asPath !== "/login") router.push('/login')
       }
     });
   }, [])
-  
-  
+
+
   return (
     <Container>
       <HeaderTop>
@@ -33,7 +34,7 @@ export default function Header() {
           <Image src='/logo.svg' width={40} height={40} alt="Logo Create Quiz" />
         </Rotate>
         <Title>MONTANDO QUIZ</Title>
-        {Logado? (<BtnLogado><AiOutlineUser size="2rem"/></BtnLogado>):(<div></div>)}
+        {Logado ? (<><BtnLogado><AiOutlineUser size="2rem" /></BtnLogado></>) : (<></>)}
       </HeaderTop>
       <Links>
         <Link href='/' legacyBehavior>
