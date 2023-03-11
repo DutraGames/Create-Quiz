@@ -20,14 +20,12 @@ export default function register() {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredencial) => {
                 const user = userCredencial.user
-                console.log(user)
 
                 setEmail("")
                 setPassword("")
                 router.push('/')
 
             }).catch((error) => {
-                console.log(error.message);
                 alert("Email ou senha inválidos!")
                 return
             })
