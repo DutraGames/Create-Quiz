@@ -6,11 +6,11 @@ import React, { useEffect } from 'react'
 import { AiOutlineUser } from 'react-icons/ai'
 import useAuth from '../../hooks/useAuth'
 import { auth } from '../../service/configFirebase'
-import { BtnLogado, ButtonsLink, Container, HeaderBottom, HeaderTop, Links, Rotate, Title } from './style'
+import { BtnLogado, ButtonsLink, Container, HeaderBottom, HeaderTop, Links, NameUser, Rotate, Title } from './style'
 
 export default function Header() {
 
-  const { Logado, setLogado, setNome } = useAuth()
+  const { Logado, setLogado, setNome , nome} = useAuth()
   const router = useRouter()
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function Header() {
           <Image src='/logo.svg' width={40} height={40} alt="Logo Create Quiz" />
         </Rotate>
         <Title>MONTANDO QUIZ</Title>
-        {Logado ? (<><BtnLogado><AiOutlineUser size="2rem" /></BtnLogado></>) : (<></>)}
+        {Logado ? (<><BtnLogado><AiOutlineUser size="2rem" /></BtnLogado><NameUser>{nome}</NameUser></>) : (<></>)}
       </HeaderTop>
       {Logado? (
              <HeaderBottom>

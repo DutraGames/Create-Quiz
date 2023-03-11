@@ -86,3 +86,9 @@ align-items: center;
 justify-content: center;
 color: #FFF;
 `
+
+export const NameUser = styled.span`
+color: #FFF;
+padding-left: .5rem;
+font-size: 1.6rem;
+`
