@@ -8,11 +8,10 @@ import HeadMain from '../components/HeadMain'
 import useAuth from '../hooks/useAuth'
 import { database } from '../service/configFirebase'
 import { ButtomDelete, Container, Question, QuestionBNCC, QuestionLeft, QuestionName, QuestionText } from '../styles/question'
-
 export default function Perguntas() {
 
     const [Perguntas, setPerguntas] = useState([])
-    const {nome} = useAuth()
+    const { nome } = useAuth()
     const router = useRouter()
     const categoria = router.query.categoria
 
@@ -58,7 +57,7 @@ export default function Perguntas() {
                                     <QuestionText>{pergunta.P}</QuestionText>
                                     <QuestionName>{pergunta.nomeUser}</QuestionName>
                                 </QuestionLeft>
-                                {nome === pergunta.nomeUser? (<ButtomDelete onClick={() => DeleteQuestion(pergunta.chave)}><MdDelete size="3rem" /></ButtomDelete>): (<></>)}
+                                {nome === pergunta.nomeUser ? (<ButtomDelete onClick={() => DeleteQuestion(pergunta.chave)}><MdDelete size="3rem" /></ButtomDelete>) : (<></>)}
                             </Question>
                         )
                     })
