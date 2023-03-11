@@ -4,10 +4,10 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import HeadMain from '../components/HeadMain'
 import useAuth from '../hooks/useAuth'
 import { auth } from '../service/configFirebase'
 import { ButtonCreate, Frame, Input, LinkButton, TextBottom, Title } from '../styles/regisLogin'
-
 
 export default function register() {
 
@@ -49,14 +49,14 @@ export default function register() {
 
     return (
         <>
+            <HeadMain title='Montando Quiz - register' desc='Fazendo o cadastro na saplicação!' />
             <Header />
-
             <Frame>
                 <Title>Cadastrar-se:</Title>
                 <Input placeholder='seu nome' type="text" value={username} onChange={(text) => setUsername(text.target.value)} />
                 <Input placeholder='seuemail@gmail.com' type="email" value={email} onChange={(text) => setEmail(text.target.value)} />
                 <Input placeholder='sua senha123' type="password" value={password} onChange={(text) => setPassword(text.target.value)} />
-                <ButtonCreate onClick={CreateAccont}>Criar</ButtonCreate>
+                <ButtonCreate onClick={CreateAccont}>Cadastrar-se</ButtonCreate>
                 <TextBottom>Caso tenha conta, faça <Link href="/login" legacyBehavior><LinkButton>Login</LinkButton></Link></TextBottom>
             </Frame>
             <Footer />
