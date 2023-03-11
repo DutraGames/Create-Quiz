@@ -5,7 +5,7 @@ import Header from '../components/Header'
 import HeadMain from '../components/HeadMain'
 import useAuth from '../hooks/useAuth'
 import { database } from '../service/configFirebase'
-import { ButtonSave, Category, FrameQuestion, InputTezt } from '../styles/app'
+import { ButtonSave, Category, Container, FrameQuestion, InputTezt } from '../styles/app'
 export default function Home() {
 
   const [Categoria, setCategoria] = useState('Portugues')
@@ -54,7 +54,7 @@ export default function Home() {
   }
 
   return (
-    <>
+    <Container>
       <HeadMain title='Montando Quiz' desc='Crie suas questões forma rápida!' />
       <Header />
       <FrameQuestion>
@@ -73,6 +73,6 @@ export default function Home() {
         <ButtonSave onClick={SaveData}>Salvar</ButtonSave>
       </FrameQuestion>
       <Footer />
-    </>
+    </Container>
   )
 }
