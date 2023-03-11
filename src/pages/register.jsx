@@ -17,9 +17,16 @@ export default function register() {
     const [username, setUsername] = useState("")
     const { Logado } = useAuth()
 
+    const validateEmail = (email) =>{
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
     const CreateAccont = async () => {
         if (email !== "" && username !== "" && password !== "") {
-            await createUserWithEmailAndPassword(auth, email, password)
+
+            if(validateEmail(email)){
+                await createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredencial) => {
                     const user = userCredencial.user
 
@@ -33,7 +40,7 @@ export default function register() {
                             router.push('/')
                             return
                         })
-                        .catch((error)=>{
+                        .catch((error) => {
                             console.log(error);
                         })
 
@@ -41,7 +48,13 @@ export default function register() {
                     console.log(error.message);
                     return
                 })
-        }else{
+            }else{
+                alert("Email inválido!")
+            }
+
+
+            
+        } else {
             alert("Preencha todos os campos!")
         }
     }
@@ -58,8 +71,8 @@ export default function register() {
                 <Title>Cadastrar-se:</Title>
                 <Input placeholder='seu nome' maxLength={8} type="text" value={username} onChange={(text) => setUsername(text.target.value)} />
                 <Input placeholder='seuemail@gmail.com' type="email" value={email} onChange={(text) => setEmail(text.target.value)} />
-                <Input placeholder='sua senha123' type="password" value={password} onChange={(text) => setPassword(text.target.value)} minLength={6}/>
-                {password.length >= 6?(<ButtonCreate onClick={CreateAccont}>Cadastrar-se</ButtonCreate>): (<ButtonCreate disabled onClick={CreateAccont}>Cadastrar-se</ButtonCreate>)}
+                <Input placeholder='sua senha123' type="password" value={password} onChange={(text) => setPassword(text.target.value)} minLength={6} />
+                {password.length >= 6 ? (<ButtonCreate onClick={CreateAccont}>Cadastrar-se</ButtonCreate>) : (<ButtonCreate disabled onClick={CreateAccont}>Cadastrar-se</ButtonCreate>)}
                 <TextBottom>Caso tenha conta, faça <Link href="/login" legacyBehavior><LinkButton>Login</LinkButton></Link></TextBottom>
             </Frame>
             <Footer />
