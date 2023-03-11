@@ -39,9 +39,10 @@ export default function register() {
 
                 }).catch((error) => {
                     console.log(error.message);
-                    alert("Email ou senha inválidos!")
                     return
                 })
+        }else{
+            alert("Preencha todos os campos!")
         }
     }
 
@@ -57,8 +58,8 @@ export default function register() {
                 <Title>Cadastrar-se:</Title>
                 <Input placeholder='seu nome' maxLength={8} type="text" value={username} onChange={(text) => setUsername(text.target.value)} />
                 <Input placeholder='seuemail@gmail.com' type="email" value={email} onChange={(text) => setEmail(text.target.value)} />
-                <Input placeholder='sua senha123' type="password" value={password} onChange={(text) => setPassword(text.target.value)} />
-                <ButtonCreate onClick={CreateAccont}>Cadastrar-se</ButtonCreate>
+                <Input placeholder='sua senha123' type="password" value={password} onChange={(text) => setPassword(text.target.value)} minLength={6}/>
+                {password.length >= 6?(<ButtonCreate onClick={CreateAccont}>Cadastrar-se</ButtonCreate>): (<ButtonCreate disabled onClick={CreateAccont}>Cadastrar-se</ButtonCreate>)}
                 <TextBottom>Caso tenha conta, faça <Link href="/login" legacyBehavior><LinkButton>Login</LinkButton></Link></TextBottom>
             </Frame>
             <Footer />
