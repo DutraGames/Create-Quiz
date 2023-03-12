@@ -11,7 +11,7 @@ import { ButtomDelete, Container, Question, QuestionBNCC, QuestionLeft, Question
 export default function Perguntas() {
 
     const [Perguntas, setPerguntas] = useState([])
-    const { nome } = useAuth()
+    const { nome, ID } = useAuth()
     const router = useRouter()
     const categoria = router.query.categoria
 
@@ -29,6 +29,7 @@ export default function Perguntas() {
                     'BNCC': valor.BNCC,
                     'R': valor.R,
                     'nomeUser': valor.nomeUser,
+                    'uidUser': valor.uidUser,
                 }
             })
             setPerguntas(data)
@@ -57,7 +58,7 @@ export default function Perguntas() {
                                     <QuestionText>{pergunta.P}</QuestionText>
                                     <QuestionName>{pergunta.nomeUser}</QuestionName>
                                 </QuestionLeft>
-                                {nome === pergunta.nomeUser ? (<ButtomDelete onClick={() => DeleteQuestion(pergunta.chave)}><MdDelete size="3rem" /></ButtomDelete>) : (<></>)}
+                                {ID === pergunta.uidUser ? (<ButtomDelete onClick={() => DeleteQuestion(pergunta.chave)}><MdDelete size="3rem" /></ButtomDelete>) : (<></>)}
                             </Question>
                         )
                     }): (<h1>Não há questões registradas!</h1>)
