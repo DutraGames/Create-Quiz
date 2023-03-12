@@ -48,7 +48,7 @@ export default function Perguntas() {
             <Header />
             <Container>
                 {
-                    Perguntas.map((pergunta) => {
+                    Perguntas.length > 0?                     Perguntas.map((pergunta) => {
 
                         return (
                             <Question key={pergunta.chave}>
@@ -60,7 +60,7 @@ export default function Perguntas() {
                                 {nome === pergunta.nomeUser ? (<ButtomDelete onClick={() => DeleteQuestion(pergunta.chave)}><MdDelete size="3rem" /></ButtomDelete>) : (<></>)}
                             </Question>
                         )
-                    })
+                    }): (<h1>Não há questões registradas!</h1>)
                 }
             </Container>
 
