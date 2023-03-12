@@ -1,11 +1,13 @@
 import { push, ref } from 'firebase/database'
 import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import HeadMain from '../components/HeadMain'
 import useAuth from '../hooks/useAuth'
 import { database } from '../service/configFirebase'
 import { ButtonSave, Category, Container, FrameQuestion, InputTezt } from '../styles/app'
+
 export default function Home() {
 
   const [Categoria, setCategoria] = useState('Portugues')
@@ -33,14 +35,14 @@ export default function Home() {
       }
 
       if (RESPOSTA !== "A" && RESPOSTA !== "B") {
-        alert("Somente alternativas A ou B")
+        toast.error("Somente alternativas A ou B")
         return
       }
 
       let referencial = ref(database, `2alternativas/${Categoria}`)
 
       await push(referencial, Dados)
-
+      toast.success("Pergunta adiciona!")
       setCategoria('Portugues')
       setPergunta('')
       setAlternativeA('')
@@ -50,7 +52,7 @@ export default function Home() {
 
       return
     }
-    alert("prencha todos os campos!")
+    toast.error("prencha todos os campos!")
   }
 
   return (

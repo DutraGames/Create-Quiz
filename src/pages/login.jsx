@@ -2,6 +2,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import HeadMain from '../components/HeadMain'
@@ -24,9 +25,10 @@ export default function register() {
                 setEmail("")
                 setPassword("")
                 router.push('/')
+                toast.success('Login com sucesso!')
 
             }).catch((error) => {
-                alert("Email ou senha inválidos!")
+                toast.error("Email ou senha inválidos!")
                 return
             })
     }
