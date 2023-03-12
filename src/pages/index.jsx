@@ -16,7 +16,7 @@ export default function Home() {
   const [alternativeB, setAlternativeB] = useState('')
   const [resposta, setResposta] = useState('')
   const [BNCC, setBNCC] = useState('')
-  const { nome } = useAuth()
+  const { nome, ID } = useAuth()
 
   const SaveData = async () => {
 
@@ -32,6 +32,7 @@ export default function Home() {
         R: RESPOSTA,
         BNCC: BNCCCode,
         nomeUser: nome,
+        uidUser: ID
       }
 
       if (RESPOSTA !== "A" && RESPOSTA !== "B") {
