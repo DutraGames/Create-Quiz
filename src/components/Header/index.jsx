@@ -10,7 +10,7 @@ import { BtnLogado, ButtonsLink, Container, HeaderBottom, HeaderTop, Links, Name
 
 export default function Header() {
 
-  const { Logado, setLogado, setNome , nome} = useAuth()
+  const { Logado, setLogado, setNome , nome, setID,ID} = useAuth()
   const router = useRouter()
 
   useEffect(() => {
@@ -19,6 +19,7 @@ export default function Header() {
       if (user) {
         setLogado(true)
         setNome(user.displayName)
+        setID(user.uid)
 
       } else {
         if (router.asPath !== "/register" && router.asPath !== "/login") router.push('/login')
