@@ -23,10 +23,14 @@ gap: 2rem;
 }
 `
 
-
+export const Selectors = styled.div`
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+`
 
 export const Category = styled.select`
-width: 100%;
 height: 4rem;
 border-radius: 1.5rem;
 border: 0;
