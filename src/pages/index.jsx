@@ -62,7 +62,7 @@ export default function Home() {
       setAlternativeA('')
       setAlternativeB('')
       setResposta('')
-      setBNCC('')
+      setBNCC('EF' + serie + 'LP' + nivel)
 
       return
     }
