@@ -1,17 +1,16 @@
 import { onValue, ref, remove } from 'firebase/database'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import { MdDelete } from 'react-icons/md'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import HeadMain from '../components/HeadMain'
-import useAuth from '../hooks/useAuth'
+import Question from '../components/Question'
 import { database } from '../service/configFirebase'
-import { ButtomDelete, Container, Question, QuestionBNCC, QuestionLeft, QuestionName, QuestionText } from '../styles/question'
+import { Container } from '../styles/question'
 export default function Perguntas() {
 
     const [Perguntas, setPerguntas] = useState([])
-    const { nome, ID } = useAuth()
+    
     const router = useRouter()
     const categoria = router.query.categoria
 
@@ -52,14 +51,7 @@ export default function Perguntas() {
                     Perguntas.length > 0?                     Perguntas.map((pergunta) => {
 
                         return (
-                            <Question key={pergunta.chave}>
-                                <QuestionLeft>
-                                    <QuestionBNCC>{pergunta.BNCC}</QuestionBNCC>
-                                    <QuestionText>{pergunta.P}</QuestionText>
-                                    <QuestionName>{pergunta.nomeUser}</QuestionName>
-                                </QuestionLeft>
-                                {ID === pergunta.uidUser ? (<ButtomDelete onClick={() => DeleteQuestion(pergunta.chave)}><MdDelete size="3rem" /></ButtomDelete>) : (<></>)}
-                            </Question>
+                            <Question data={pergunta} DeleteQuestion={DeleteQuestion}/>
                         )
                     }): (<h1>Não há questões registradas!</h1>)
                 }
