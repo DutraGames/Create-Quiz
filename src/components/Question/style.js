@@ -6,8 +6,7 @@ background-color: #FFE7A8;
 padding: 1rem;
 width: 100%;
 display: flex;
-align-items: center;
-justify-content: space-between;
+flex-direction: column;
 border-radius: 1rem;
 box-shadow: .2rem .2rem .2rem .1rem rgba(0,0,0,.2);
 position: relative;
@@ -17,12 +16,18 @@ position: relative;
 }
 `
 
+export const QuestionInternal = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding-bottom: 1rem;
+`
+
 export const QuestionLeft = styled.div`
 `
 
 export const QuestionRight = styled.div`
 display: flex;
-color: #0F0;
 `
 
 export const QuestionBNCC = styled.p`
@@ -54,7 +59,7 @@ transition: all .4s;
 `
 
 export const ButtomEye = styled.div`
-
+color: #013F03;
 `
 
 export const QuestionName = styled.p`
@@ -70,7 +75,12 @@ margin-top: .5rem;
 
 export const DataQuestion = styled.div`
 display: ${props => props.hidden ? 'block' : 'none'};
+border-top: .1rem solid #FFF;
+padding-top: 1rem;
 
 `
 
-export const Alternative = styled.p``
+export const Alternative = styled.p`
+text-align: center;
+font-size: 1.6rem;
+`
