@@ -4,7 +4,7 @@ import { MdDelete } from 'react-icons/md'
 import useAuth from '../../hooks/useAuth'
 import { Alternative, ButtomDelete, ButtomEye, DataQuestion, Question, QuestionBNCC, QuestionInternal, QuestionLeft, QuestionName, QuestionRight, QuestionText } from './style'
 
-export default function Questions({ data }) {
+export default function Questions({ data,DeleteQuestion }) {
 
     const { ID } = useAuth()
     const [hidden, setHidden] = useState(false)
@@ -18,7 +18,7 @@ export default function Questions({ data }) {
                     <QuestionName>{data.nomeUser}</QuestionName>
                 </QuestionLeft>
                 <QuestionRight>
-                    {ID === data.uidUser ? (<ButtomDelete onClick={() => DeleteQuestion(pergunta.chave)}><MdDelete size="3rem" /></ButtomDelete>) : (<></>)}
+                    {ID === data.uidUser ? (<ButtomDelete onClick={() => DeleteQuestion(data.chave)}><MdDelete size="3rem" /></ButtomDelete>) : (<></>)}
                     <ButtomEye onClick={() => setHidden(!hidden)}>
                         {hidden ? <AiOutlineEye size="3rem"></AiOutlineEye> : <AiOutlineEyeInvisible size="3rem"></AiOutlineEyeInvisible>}
                     </ButtomEye>
