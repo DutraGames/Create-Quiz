@@ -79,7 +79,7 @@ export default function Home() {
                 <InputTezt type="text" placeholder='Digite alternativa B' value={alternativeB} onChange={(text) => setAlternativeB(text.target.value)} />
                 <InputTezt type="text" placeholder='Digite a resposta (A,B)' value={resposta} onChange={(text) => setResposta(text.target.value)} maxLength={1} />
                 <InputTezt type="text" placeholder='Digite o código BNCC' value={BNCC} disabled maxLength={8} minLength={8} />
-                <ButtonSave onClick={SaveData}>Salvar</ButtonSave>
+                <ButtonSave onClick={SaveData}>Atualizar</ButtonSave>
             </FrameQuestion>
             <Footer />
         </Container>
