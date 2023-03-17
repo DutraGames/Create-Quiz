@@ -4,7 +4,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import { MdDelete, MdEdit } from 'react-icons/md'
 import useAuth from '../../hooks/useAuth'
 import { Alternative, ButtomDelete, ButtomEdit, ButtomEye, DataQuestion, Question, QuestionBNCC, QuestionInternal, QuestionLeft, QuestionName, QuestionRight, QuestionText } from './style'
-export default function Questions({ data, DeleteQuestion }) {
+export default function Questions({ data, DeleteQuestion,categoria }) {
 
     const { ID } = useAuth()
     const [hidden, setHidden] = useState(false)
@@ -14,7 +14,7 @@ export default function Questions({ data, DeleteQuestion }) {
     const EditLocal = () => {
         router.push({
             pathname: "/update",
-            query: { data: JSON.stringify(dataquestion), categoria: "Geografia" }
+            query: { data: JSON.stringify(dataquestion), categoria: categoria }
         })
     }
 
