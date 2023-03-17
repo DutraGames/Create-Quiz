@@ -51,7 +51,7 @@ export default function Perguntas() {
                     Perguntas.length > 0?                     Perguntas.map((pergunta) => {
 
                         return (
-                            <Question data={pergunta} DeleteQuestion={DeleteQuestion}/>
+                            <Question data={pergunta} DeleteQuestion={DeleteQuestion} categoria={categoria}/>
                         )
                     }): (<h1>Não há questões registradas!</h1>)
                 }

@@ -28,6 +28,7 @@ export const QuestionLeft = styled.div`
 
 export const QuestionRight = styled.div`
 display: flex;
+gap: .2rem;
 `
 
 export const QuestionBNCC = styled.p`
@@ -49,8 +50,7 @@ margin-top: .5rem;
 export const ButtomDelete = styled.div`
 cursor: pointer;
 color: #DC0000;
-margin-right: 2rem;
-z-index: 1;
+
 transition: all .4s;
 
 &:hover{
@@ -60,6 +60,19 @@ transition: all .4s;
 
 export const ButtomEye = styled.div`
 color: #013F03;
+cursor: pointer;
+
+&:hover{
+    color:#217F09;
+}
+`
+export const ButtomEdit = styled.div`
+color: #013F03;
+cursor: pointer;
+
+&:hover{
+    color:#217F09;
+}
 `
 
 export const QuestionName = styled.p`
