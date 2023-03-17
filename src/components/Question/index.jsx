@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
-import { MdDelete } from 'react-icons/md'
+import { MdDelete, MdEdit } from 'react-icons/md'
 import useAuth from '../../hooks/useAuth'
-import { Alternative, ButtomDelete, ButtomEye, DataQuestion, Question, QuestionBNCC, QuestionInternal, QuestionLeft, QuestionName, QuestionRight, QuestionText } from './style'
+import { Alternative, ButtomDelete, ButtomEdit, ButtomEye, DataQuestion, Question, QuestionBNCC, QuestionInternal, QuestionLeft, QuestionName, QuestionRight, QuestionText } from './style'
 
 export default function Questions({ data,DeleteQuestion }) {
 
@@ -22,6 +22,7 @@ export default function Questions({ data,DeleteQuestion }) {
                     <ButtomEye onClick={() => setHidden(!hidden)}>
                         {hidden ? <AiOutlineEye size="3rem"></AiOutlineEye> : <AiOutlineEyeInvisible size="3rem"></AiOutlineEyeInvisible>}
                     </ButtomEye>
+                    {ID === data.uidUser ? (<ButtomEdit><MdEdit size="3rem"/></ButtomEdit>) : (<></>)}
                 </QuestionRight>
             </QuestionInternal>
             <DataQuestion hidden={hidden}>
