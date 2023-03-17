@@ -60,6 +60,8 @@ export default function Home() {
             let referencial = ref(database, `2alternativas/${categoria}`)
             let childref = child(referencial,data.chave)
             set(childref,Dados)
+            toast.success("Dados atualizado com Sucesso!")
+            router.push(`/perguntas?categoria=${categoria}`)
             
 
             return
