@@ -1,13 +1,22 @@
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import { MdDelete, MdEdit } from 'react-icons/md'
 import useAuth from '../../hooks/useAuth'
 import { Alternative, ButtomDelete, ButtomEdit, ButtomEye, DataQuestion, Question, QuestionBNCC, QuestionInternal, QuestionLeft, QuestionName, QuestionRight, QuestionText } from './style'
-
-export default function Questions({ data,DeleteQuestion }) {
+export default function Questions({ data, DeleteQuestion }) {
 
     const { ID } = useAuth()
     const [hidden, setHidden] = useState(false)
+    const router = useRouter()
+    const dataquestion = data
+
+    const EditLocal = () => {
+        router.push({
+            pathname: "/update",
+            query: { data: JSON.stringify(dataquestion), categoria: "Geografia" }
+        })
+    }
 
     return (
         <Question key={data.chave}>
@@ -20,9 +29,9 @@ export default function Questions({ data,DeleteQuestion }) {
                 <QuestionRight>
                     {ID === data.uidUser ? (<ButtomDelete onClick={() => DeleteQuestion(data.chave)}><MdDelete size="3rem" /></ButtomDelete>) : (<></>)}
                     <ButtomEye onClick={() => setHidden(!hidden)}>
-                        {hidden ? <AiOutlineEye size="3rem"></AiOutlineEye> : <AiOutlineEyeInvisible size="3rem"></AiOutlineEyeInvisible>}
+                        {hidden ? <AiOutlineEye size="3rem" ></AiOutlineEye> : <AiOutlineEyeInvisible size="3rem"></AiOutlineEyeInvisible>}
                     </ButtomEye>
-                    {ID === data.uidUser ? (<ButtomEdit><MdEdit size="3rem"/></ButtomEdit>) : (<></>)}
+                    {ID === data.uidUser ? (<ButtomEdit onClick={EditLocal}><MdEdit size="3rem" /></ButtomEdit>) : (<></>)}
                 </QuestionRight>
             </QuestionInternal>
             <DataQuestion hidden={hidden}>
