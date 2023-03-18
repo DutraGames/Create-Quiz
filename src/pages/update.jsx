@@ -12,7 +12,6 @@ import { ButtonSave, Container, FrameQuestion, InputTezt } from '../styles/app'
 export default function Home() {
 
     const [pergunta, setPergunta] = useState('')
-    const [perguntaBase, setPerguntaBase] = useState('')
     const [alternativeA, setAlternativeA] = useState('')
     const [alternativeB, setAlternativeB] = useState('')
     const [resposta, setResposta] = useState('')
@@ -24,7 +23,6 @@ export default function Home() {
 
     useEffect(() => {
         setPergunta(data.P)
-        setPerguntaBase(data.P)
         setAlternativeA(data.A)
         setAlternativeB(data.B)
         setResposta(data.R)
@@ -58,11 +56,11 @@ export default function Home() {
 
 
             let referencial = ref(database, `2alternativas/${categoria}`)
-            let childref = child(referencial,data.chave)
-            set(childref,Dados)
+            let childref = child(referencial, data.chave)
+            set(childref, Dados)
             toast.success("Dados atualizado com Sucesso!")
             router.push(`/perguntas?categoria=${categoria}`)
-            
+
 
             return
         }
