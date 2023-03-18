@@ -13,7 +13,7 @@ export default function Questions({ data, DeleteQuestion,categoria }) {
 
     const EditLocal = () => {
         router.push({
-            pathname: "/update",
+            pathname: "/updatepergunta",
             query: { data: dataquestion, categoria: categoria }
         })
     }
