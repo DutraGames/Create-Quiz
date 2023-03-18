@@ -18,15 +18,20 @@ export default function Home() {
     const [BNCC, setBNCC] = useState('')
     const { nome, ID } = useAuth()
     const router = useRouter()
-    const data = JSON.parse(router.query.data)
     const categoria = router.query.categoria
+    const A = router.query.A
+    const B = router.query.B
+    const P = router.query.P
+    const R = router.query.R
+    const BNCCurl = router.query.BNCC
+    const chave = router.query.chave
 
     useEffect(() => {
-        setPergunta(data.P)
-        setAlternativeA(data.A)
-        setAlternativeB(data.B)
-        setResposta(data.R)
-        setBNCC(data.BNCC)
+        setPergunta(P)
+        setAlternativeA(A)
+        setAlternativeB(B)
+        setResposta(R)
+        setBNCC(BNCCurl)
     }, [])
 
 
@@ -56,7 +61,7 @@ export default function Home() {
 
 
             let referencial = ref(database, `2alternativas/${categoria}`)
-            let childref = child(referencial, data.chave)
+            let childref = child(referencial, chave)
             set(childref, Dados)
             toast.success("Dados atualizado com Sucesso!")
             router.push(`/perguntas?categoria=${categoria}`)

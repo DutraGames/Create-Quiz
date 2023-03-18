@@ -9,12 +9,17 @@ export default function Questions({ data, DeleteQuestion,categoria }) {
     const { ID } = useAuth()
     const [hidden, setHidden] = useState(false)
     const router = useRouter()
-    const dataquestion = JSON.stringify(data)
+    const BNCC = data.BNCC
+    const P = data.P
+    const A = data.A
+    const B = data.B
+    const R = data.R
+    const chave = data.chave
 
     const EditLocal = () => {
         router.push({
             pathname: "/updatepergunta",
-            query: { data: dataquestion, categoria: categoria }
+            query: { BNCC: BNCC, categoria: categoria, P: P, R: R, A: A, B: B, chave: chave }
         })
     }
 
