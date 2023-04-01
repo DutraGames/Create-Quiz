@@ -3,6 +3,7 @@ import styled from "styled-components"
 styled
 export const Question = styled.div`
 background-color: #FFE7A8;
+margin-top: 1.5rem;
 padding: 1rem;
 width: 100%;
 display: flex;
