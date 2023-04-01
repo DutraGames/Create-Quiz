@@ -2,8 +2,8 @@ import { push, ref } from 'firebase/database'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import Footer from '../components/Footer'
-import Header from '../components/Header'
 import HeadMain from '../components/HeadMain'
+import Header from '../components/Header'
 import useAuth from '../hooks/useAuth'
 import { database } from '../service/configFirebase'
 import { ButtonSave, Category, Container, FrameQuestion, InputTezt, Selectors } from '../styles/app'
@@ -54,7 +54,7 @@ export default function Home() {
       let referencial = ref(database, `2alternativas/${Categoria}`)
 
       await push(referencial, Dados)
-      toast.success("Pergunta adiciona!")
+      toast.success("Pergunta adicionada!")
       setCategoria('Portugues')
       setNivel('01')
       setSerie('01')
@@ -89,7 +89,7 @@ export default function Home() {
           <Category value={Categoria} onChange={(text) => setCategoria(text.target.value)}>
             <option value="Portugues">LP = Português</option>
             <option value="Ciencias">CI = Ciências</option>
-            <option value="Historia">HI = Hístória</option>
+            <option value="Historia">HI = História</option>
             <option value="Geografia">GE = Geografia</option>
             <option value="Matematica">MA = Matemática</option>
           </Category>
