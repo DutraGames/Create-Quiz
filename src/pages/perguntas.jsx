@@ -1,12 +1,14 @@
 import { onValue, ref, remove } from 'firebase/database'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { BiSearch } from 'react-icons/bi'
 import Footer from '../components/Footer'
 import HeadMain from '../components/HeadMain'
 import Header from '../components/Header'
 import Question from '../components/Question'
 import { database } from '../service/configFirebase'
-import { Container, FieldAmount } from '../styles/question'
+import { Container, FieldAmount, FieldSearcher, SearchIcon, SearchInput } from '../styles/question'
+
 export default function Perguntas() {
 
     const [Perguntas, setPerguntas] = useState([])
@@ -67,8 +69,13 @@ export default function Perguntas() {
             <HeadMain title={`Questões de ${categoria} `} desc={`Questões de ${categoria} descritas por professores!`} />
             <Header />
             <Container>
-                <FieldAmount> Há {onSearch? textSearch.length : Perguntas.length} perguntas</FieldAmount>
-                <input onChange={SearchQuestion} placeholder='Digite a pergunta pra buscar...'></input>
+                <FieldAmount> Há {onSearch ? textSearch.length : Perguntas.length} perguntas</FieldAmount>
+                <FieldSearcher>
+                    <SearchInput onChange={SearchQuestion} placeholder='Digite a pergunta pra buscar...'></SearchInput>
+                    <SearchIcon>
+                        <BiSearch color='#000' size="2rem" />
+                    </SearchIcon>
+                </FieldSearcher>
                 {
                     onSearch ? textSearch.map((pergunta) => {
 
