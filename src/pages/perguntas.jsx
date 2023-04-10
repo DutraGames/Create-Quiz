@@ -10,6 +10,8 @@ import { Container, FieldAmount } from '../styles/question'
 export default function Perguntas() {
 
     const [Perguntas, setPerguntas] = useState([])
+    const [onSearch, setOnSearch] = useState(false)
+    const [textSearch, setTextSearch] = useState([])
 
     const router = useRouter()
     const categoria = router.query.categoria
@@ -42,19 +44,43 @@ export default function Perguntas() {
         remove(referencial)
     }
 
+    const SearchQuestion = (e) => {
+        const searchText = e.target.value
+        if (searchText.length > 0) {
+            setOnSearch(true)
+            const data = new Array
+
+            Perguntas.map((pergunta) => {
+                const rule = new RegExp(searchText, 'gi')
+                if (rule.test(pergunta.P)) {
+                    data.push(pergunta)
+                    setTextSearch(data)
+                }
+            })
+        } else {
+            setOnSearch(false)
+        }
+    }
+
     return (
         <>
             <HeadMain title={`Questões de ${categoria} `} desc={`Questões de ${categoria} descritas por professores!`} />
             <Header />
             <Container>
-                <FieldAmount> Há {Perguntas.length} perguntas</FieldAmount>
+                <FieldAmount> Há {onSearch? textSearch.length : Perguntas.length} perguntas</FieldAmount>
+                <input onChange={SearchQuestion} placeholder='Digite a pergunta pra buscar...'></input>
                 {
-                    Perguntas.length > 0 ? Perguntas.map((pergunta) => {
+                    onSearch ? textSearch.map((pergunta) => {
 
                         return (
                             <Question data={pergunta} DeleteQuestion={DeleteQuestion} categoria={categoria} />
                         )
-                    }) : (<></>)
+                    }) : Perguntas.map((pergunta) => {
+
+                        return (
+                            <Question data={pergunta} DeleteQuestion={DeleteQuestion} categoria={categoria} />
+                        )
+                    })
                 }
             </Container>
 
