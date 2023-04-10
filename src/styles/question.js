@@ -36,5 +36,5 @@ font-size: 2rem;
 export const SearchIcon = styled.div`
 position: absolute;
 right: .5rem;
-opacity: .7;
+opacity: .3;
 `
