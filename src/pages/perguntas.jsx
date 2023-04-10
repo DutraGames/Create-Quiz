@@ -19,7 +19,7 @@ export default function Perguntas() {
     const categoria = router.query.categoria
 
     useEffect(() => {
-
+        setOnSearch(false)
         const db = database
         const referencial = ref(db, `2alternativas/${categoria}`)
         onValue(referencial, (snapshot) => {
@@ -48,6 +48,7 @@ export default function Perguntas() {
 
     const SearchQuestion = (e) => {
         const searchText = e.target.value
+        setTextSearch([])
         if (searchText.length > 0) {
             setOnSearch(true)
             const data = new Array
